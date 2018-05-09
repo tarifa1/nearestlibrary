@@ -62,3 +62,19 @@ Sample input and output:
 		Hours of Operation: M, W: 10AM-6PM;  TU, TH: 12PM-8PM; F, SA: 9AM-5PM; SU: Closed
 		
 		USWAL811733:nearestlibrary ahmedt$		
+
+
+# Future Iterations 
+
+While this app retains most of the functionality originally requested, there are two areas for improvement for future iterations:
+
+a) The Hours of Operation output value currently just outputs the entirety of the library branch's hours. It does not calculate against the inputs of day and time to calculate whether the library is open or not. A second pass through should include this feature
+
+b) Popularity should be calculated using percentile rank. There is a dataset(https://data.cityofchicago.org/dataset/Libraries-2018-Visitors-by-Location/i7zz-iiza) available which contains data on yearly visits to each library by branch. Popularity should be calculated by querying the whole set of visitors data and establishing a percentile rank for the branch which can be returned to the user. This differs from the current approach which just presents the average visitors for all library locations and compares it to the yearly visits to the particular branch (in most cases, this data shows up as 'N/A' as there is a bug in querying the dataset API)
+
+c) Fix the bug which queries the Visitors API (Future Iterations - b)). As mentioned in the previous point, we should be using a different metric to caluclate popularity than this current pass. There is a bug which is causing the return data from this query to come up as a blank list (see lines 40-50 in the nearest_chicago_library.py script).
+
+
+
+
+
